@@ -1,0 +1,122 @@
+// ─── Mock Users ──────────────────────────────────────────────────────────
+export const MOCK_USERS = [
+  { id: 'u1', name: 'Alice Johnson',  role: 'employee',  email: 'alice@company.com',  avatar: 'AJ' },
+  { id: 'u2', name: 'Bob Martinez',   role: 'employee',  email: 'bob@company.com',    avatar: 'BM' },
+  { id: 'u3', name: 'Carol Smith',    role: 'manager',   email: 'carol@company.com',  avatar: 'CS' },
+  { id: 'u4', name: 'David Lee',      role: 'manager',   email: 'david@company.com',  avatar: 'DL' },
+  { id: 'u5', name: 'Eva Thompson',   role: 'ceo',       email: 'eva@company.com',    avatar: 'ET' },
+];
+
+// ─── Seed Tickets ────────────────────────────────────────────────────────
+const now = Date.now();
+const h = (n) => now - n * 3_600_000; // n hours ago
+
+export const SEED_TICKETS = [
+  {
+    id: 'TKT-001',
+    title: 'Server downtime affecting CRM',
+    description: 'Our CRM system went down at 9 AM. Multiple sales reps cannot access customer records. Urgent fix needed.',
+    priority: 'high',
+    status: 'completed',
+    createdBy: 'u1',
+    createdByName: 'Alice Johnson',
+    assignedTo: 'u3',
+    forwardedTo: null,
+    createdAt: h(36),
+    slaDeadline: h(36) + 86_400_000,
+    updatedAt: h(2),
+    imagePreview: null,
+    notes: '',
+  },
+  {
+    id: 'TKT-002',
+    title: 'VPN access issue for remote team',
+    description: 'Three remote employees in Chennai branch cannot connect to VPN. They are blocked from internal tools.',
+    priority: 'high',
+    status: 'assigned',
+    createdBy: 'u2',
+    createdByName: 'Bob Martinez',
+    assignedTo: 'u4',
+    forwardedTo: 'David Lee',
+    createdAt: h(10),
+    slaDeadline: h(10) + 86_400_000,
+    updatedAt: h(1),
+    imagePreview: null,
+    notes: '',
+  },
+  {
+    id: 'TKT-003',
+    title: 'Payroll software login failure',
+    description: 'HR team unable to log into Razorpay payroll portal. Error 403 – Access denied. Need IT to check permissions.',
+    priority: 'medium',
+    status: 'approved',
+    createdBy: 'u1',
+    createdByName: 'Alice Johnson',
+    assignedTo: 'u3',
+    forwardedTo: null,
+    createdAt: h(5),
+    slaDeadline: h(5) + 86_400_000,
+    updatedAt: h(3),
+    imagePreview: null,
+    notes: '',
+  },
+  {
+    id: 'TKT-004',
+    title: 'Office Wi-Fi intermittent drops',
+    description: 'Wi-Fi in the 3rd floor conference room keeps dropping every 20 minutes. Meetings are being disrupted.',
+    priority: 'medium',
+    status: 'created',
+    createdBy: 'u2',
+    createdByName: 'Bob Martinez',
+    assignedTo: null,
+    forwardedTo: null,
+    createdAt: h(1),
+    slaDeadline: h(1) + 86_400_000,
+    updatedAt: h(1),
+    imagePreview: null,
+    notes: '',
+  },
+  {
+    id: 'TKT-005',
+    title: 'Printer not working in admin block',
+    description: 'The HP LaserJet in admin section shows "offline" status. Multiple print jobs are queued and stuck.',
+    priority: 'low',
+    status: 'created',
+    createdBy: 'u1',
+    createdByName: 'Alice Johnson',
+    assignedTo: null,
+    forwardedTo: null,
+    createdAt: h(48), // breached!
+    slaDeadline: h(48) + 86_400_000,
+    updatedAt: h(48),
+    imagePreview: null,
+    notes: '',
+  },
+  {
+    id: 'TKT-006',
+    title: 'Email quota exceeded — Marketing team',
+    description: 'Marketing team members cannot send emails. Outlook showing quota exceeded. Need storage upgrade.',
+    priority: 'medium',
+    status: 'rejected',
+    createdBy: 'u2',
+    createdByName: 'Bob Martinez',
+    assignedTo: null,
+    forwardedTo: null,
+    createdAt: h(20),
+    slaDeadline: h(20) + 86_400_000,
+    updatedAt: h(12),
+    imagePreview: null,
+    notes: 'Duplicate request. Previous ticket TKT-000 already handled.',
+  },
+];
+
+// ─── Seed Notifications ──────────────────────────────────────────────────
+export const SEED_NOTIFICATIONS = [
+  { id: 'n1', message: 'Your ticket TKT-001 has been completed ✅', time: h(2),  read: true,  role: 'employee' },
+  { id: 'n2', message: 'Ticket TKT-002 has been assigned to David Lee', time: h(1), read: false, role: 'employee' },
+  { id: 'n3', message: 'New ticket TKT-004 awaiting your approval', time: h(1),  read: false, role: 'manager'  },
+  { id: 'n4', message: 'TKT-003 approved and ready for assignment',   time: h(3), read: true,  role: 'ceo'     },
+  { id: 'n5', message: 'SLA breached on TKT-005 — immediate action required ⚠️', time: h(0.5), read: false, role: 'ceo' },
+];
+
+export const MANAGERS = ['Carol Smith', 'David Lee', 'Riya Patel', 'Kiran Mehta'];
